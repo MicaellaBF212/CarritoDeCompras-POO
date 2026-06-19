@@ -27,11 +27,12 @@ public class PrincipalView extends javax.swing.JFrame {
         initComponents();
         crearProductoView = new CrearProductoView();
         productoDAO = new ProductoDAOMemoria();
-        productoController = new ProductoController(crearProductoView, productoDAO, 
-                actualizarProductoView, eliminarProductoView, buscarProductoView);
         actualizarProductoView = new ActualizarProductoView();
         buscarProductoView = new BuscarProductoView();
         eliminarProductoView = new EliminarProductoView();
+        productoController = new ProductoController(crearProductoView, productoDAO, 
+                actualizarProductoView, eliminarProductoView, buscarProductoView);
+        
     }
 
     /**
