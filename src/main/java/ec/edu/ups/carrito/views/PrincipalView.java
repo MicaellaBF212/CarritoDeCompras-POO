@@ -18,6 +18,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private BuscarProductoView buscarProductoView;
     private EliminarProductoView eliminarProductoView;
     private ActualizarProductoView actualizarProductoView;
+    private ListarProductosView listarProductosView;
     private ProductoDAO productoDAO;
 
     /**
@@ -30,8 +31,9 @@ public class PrincipalView extends javax.swing.JFrame {
         actualizarProductoView = new ActualizarProductoView();
         buscarProductoView = new BuscarProductoView();
         eliminarProductoView = new EliminarProductoView();
+        listarProductosView = new ListarProductosView();
         productoController = new ProductoController(crearProductoView, productoDAO, 
-                actualizarProductoView, eliminarProductoView, buscarProductoView);
+                actualizarProductoView, eliminarProductoView, buscarProductoView, listarProductosView);
         
     }
 
@@ -51,6 +53,7 @@ public class PrincipalView extends javax.swing.JFrame {
         buscarProductoMenuItem = new javax.swing.JMenuItem();
         eliminarProductoMenuItem = new javax.swing.JMenuItem();
         actualizarProductoMenuItem = new javax.swing.JMenuItem();
+        listarProductosMenuItem = new javax.swing.JMenuItem();
         carritoMenu = new javax.swing.JMenu();
         agregarProductoCarritoMenuItem = new javax.swing.JMenuItem();
         eliminarProductoCarritoMenuItem = new javax.swing.JMenuItem();
@@ -79,6 +82,11 @@ public class PrincipalView extends javax.swing.JFrame {
         actualizarProductoMenuItem.setText("Actualizar");
         actualizarProductoMenuItem.addActionListener(this::actualizarProductoMenuItemActionPerformed);
         productoMenu.add(actualizarProductoMenuItem);
+
+        listarProductosMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
+        listarProductosMenuItem.setText("Listar");
+        listarProductosMenuItem.addActionListener(this::listarProductosMenuItemActionPerformed);
+        productoMenu.add(listarProductosMenuItem);
 
         menuBar.add(productoMenu);
 
@@ -143,6 +151,14 @@ public class PrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarProductoMenuItemActionPerformed
 
+    private void listarProductosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosMenuItemActionPerformed
+        if (!listarProductosView.isVisible()) {
+            desktopPane.remove(listarProductosView);
+            listarProductosView.setVisible(true);
+            desktopPane.add(listarProductosView);
+        }
+    }//GEN-LAST:event_listarProductosMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,6 +203,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem eliminarProductoCarritoMenuItem;
     private javax.swing.JMenuItem eliminarProductoMenuItem;
+    private javax.swing.JMenuItem listarProductosMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu productoMenu;
     // End of variables declaration//GEN-END:variables

@@ -21,21 +21,24 @@ public class ProductoController {
     private BuscarProductoView buscarProductoView;
     private EliminarProductoView eliminarProductoView;
     private ActualizarProductoView actualizarProductoView;
+    private ListarProductosView listarProductosView;
     
     
     
     public ProductoController(CrearProductoView crearProductoView, ProductoDAO productoDAO, 
             ActualizarProductoView actualizarProductoView, EliminarProductoView eliminarProductoView, 
-            BuscarProductoView buscarProductoView){
+            BuscarProductoView buscarProductoView, ListarProductosView listarProductosView){
         this.crearProductoView = crearProductoView;
         this.productoDAO = productoDAO;
         this.actualizarProductoView = actualizarProductoView;
         this.buscarProductoView = buscarProductoView;
         this.eliminarProductoView = eliminarProductoView;
+        this.listarProductosView = listarProductosView;
         configurarEventosCrearProducto();
         configurarEventosActualizarProducto();
         configurarEventosBuscarProducto();
         configurarEventosEliminarProducto();
+        configurarEventosListarProductos();
     }
     
     public void crearProducto(){
@@ -139,6 +142,10 @@ public class ProductoController {
                 actualizarProducto();
             }
         });
+    }
+    
+    public void configurarEventosListarProductos(){
+        
     }
     
 }
