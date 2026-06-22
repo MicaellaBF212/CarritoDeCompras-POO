@@ -6,6 +6,7 @@ package ec.edu.ups.carrito.views;
 
 import ec.edu.ups.carrito.models.Producto;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +23,15 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
         initComponents();
         configurarTabla();
     }
+
+    public JButton getBtnListar() {
+        return btnListar;
+    }
+
+    public void setBtnListar(JButton btnListar) {
+        this.btnListar = btnListar;
+    }
+    
     
     public void configurarTabla(){
         modelo = new DefaultTableModel();
@@ -33,6 +43,7 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
     }
     
     public void cargarDatos(List<Producto> productos){
+        modelo.setRowCount(0);
         for(Producto producto : productos){
             Object[] fila = {
                 producto.getCodigo(),
@@ -54,6 +65,7 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductos = new javax.swing.JTable();
+        btnListar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -74,15 +86,25 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblProductos);
 
+        btnListar.setText("Listar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnListar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnListar)
+                .addContainerGap())
         );
 
         pack();
@@ -90,6 +112,7 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnListar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblProductos;
     // End of variables declaration//GEN-END:variables

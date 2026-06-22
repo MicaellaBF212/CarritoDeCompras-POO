@@ -144,8 +144,17 @@ public class ProductoController {
         });
     }
     
+    public void listarProductos(){
+        listarProductosView.cargarDatos(productoDAO.listar());
+    }
+    
     public void configurarEventosListarProductos(){
-        
+        listarProductosView.getBtnListar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                listarProductos();
+            }
+        });
     }
     
 }
